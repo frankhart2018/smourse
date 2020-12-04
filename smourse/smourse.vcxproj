@@ -146,6 +146,7 @@
     <ClCompile Include="src\error_log.cpp" />
     <ClCompile Include="src\helpers.cpp" />
     <ClCompile Include="src\morse_to_en.cpp" />
+    <ClCompile Include="src\opcodes.cpp" />
     <ClCompile Include="src\smourse.cpp" />
     <ClCompile Include="src\token.cpp" />
     <ClCompile Include="src\tokenizer.cpp" />
@@ -154,6 +155,8 @@
     <ClInclude Include="include\error_log.hpp" />
     <ClInclude Include="include\helpers.hpp" />
     <ClInclude Include="include\morse_to_en.hpp" />
+    <ClInclude Include="include\opcodes.hpp" />
+    <ClInclude Include="include\parser.hpp" />
     <ClInclude Include="include\token.hpp" />
     <ClInclude Include="include\tokenizer.hpp" />
   </ItemGroup>

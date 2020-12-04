@@ -8,7 +8,7 @@
 #include "error_log.hpp"
 #include "helpers.hpp"
 
-Tokenizer::Tokenizer(std::string en_source)
+Tokenizer::Tokenizer(std::string& en_source)
 	: en_source(en_source), line_num(1) {}
 
 std::string Tokenizer::keyword_operator_identifier(std::string& token_string, unsigned int& i) {
@@ -76,7 +76,6 @@ std::vector<Token> Tokenizer::tokenize() {
 		if (isdigit(en_source[i])) {
 			try {
 				type = numeric_val(token_string, i);
-				print(token_string);
 				tokens.emplace_back(Token(type, token_string, line_num));
 				token_string = "";
 			}

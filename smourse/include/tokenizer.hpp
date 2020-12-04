@@ -24,7 +24,7 @@ private:
 public:
 	Tokenizer() = delete;
 
-	Tokenizer(std::string source);
+	Tokenizer(std::string& en_source);
 
 	std::vector<Token> tokenize();
 };
