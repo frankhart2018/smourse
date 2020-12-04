@@ -6,6 +6,7 @@
 #include "token.hpp"
 #include "tokenizer.hpp"
 #include "error_log.hpp"
+#include "helpers.hpp"
 
 Tokenizer::Tokenizer(std::string en_source)
 	: en_source(en_source), line_num(1) {}
@@ -36,6 +37,34 @@ void Tokenizer::string_val(std::string& token_string, unsigned int& i, char star
 	i++;
 }
 
+std::string Tokenizer::numeric_val(std::string& token_string, unsigned int& i) {
+	int decimal_point_count = 0;
+
+	while (en_source[i] != ' ' && en_source[i] != '\n' && i < en_source.length()) {
+		if (isdigit(en_source[i]))
+			token_string += en_source[i];
+		else if (en_source[i] == 'd' && i+1 < en_source.length() && en_source[i+1] == 'c') {
+			if (decimal_point_count == 0) {
+				token_string += '.';
+				decimal_point_count++;
+				i++;
+			}
+			else {
+				throw ErrorLog("multiple decimal points in numeric constant", line_num);
+			}
+		}
+		else
+			throw ErrorLog("non-numeric characters in numeric constant", line_num);
+
+		i++;
+	}
+
+	if (decimal_point_count == 0)
+		return "int_numeral";
+
+	return "float_numeral";
+}
+
 std::vector<Token> Tokenizer::tokenize() {
 	std::vector<Token> tokens;
 	
@@ -44,7 +73,18 @@ std::vector<Token> Tokenizer::tokenize() {
 	std::string token_string = "";
 
 	while (i < en_source.length()) {
-		if (isalnum(en_source[i])) {
+		if (isdigit(en_source[i])) {
+			try {
+				type = numeric_val(token_string, i);
+				print(token_string);
+				tokens.emplace_back(Token(type, token_string, line_num));
+				token_string = "";
+			}
+			catch (ErrorLog&) {
+				throw;
+			}
+		}
+		else if (isalnum(en_source[i])) {
 			type = keyword_operator_identifier(token_string, i);
 			tokens.emplace_back(Token(type, token_string, line_num));
 			token_string = "";
@@ -56,7 +96,7 @@ std::vector<Token> Tokenizer::tokenize() {
 				tokens.emplace_back(Token("string", token_string.substr(1, token_string.length() - 2), line_num));
 				token_string = "";
 			}
-			catch (ErrorLog& e) {
+			catch (ErrorLog&) {
 				throw;
 			}
 		}

@@ -4,17 +4,7 @@
 #include <string>
 #include <cstddef>
 
-template <typename T>
-void print(T value) {
-    std::cout << value << std::endl;
-}
-
-void print_ascii(std::string value) {
-    for (char& ch : value) {
-        std::cout << (int)ch << " ";
-    }
-    std::cout << std::endl;
-}
+#include "helpers.hpp"
 
 void findAndReplaceAll(std::string& data, std::string to_search, std::string replace_str) {
     size_t pos = data.find(to_search);

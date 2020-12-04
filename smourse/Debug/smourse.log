@@ -1,3 +1,4 @@
-﻿  tokenizer.cpp
-D:\oss\smourse\smourse\src\tokenizer.cpp(59,21): warning C4101: 'e': unreferenced local variable
+﻿  morse_to_en.cpp
+  tokenizer.cpp
+  Generating Code...
   smourse.vcxproj -> D:\oss\smourse\Debug\smourse.exe

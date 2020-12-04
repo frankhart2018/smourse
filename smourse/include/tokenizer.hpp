@@ -16,7 +16,10 @@ private:
 	};
 
 	std::string keyword_operator_identifier(std::string& token_string, unsigned int& i);
+
 	void string_val(std::string& token_string, unsigned int& i, char started_with);
+
+	std::string numeric_val(std::string& token_string, unsigned int& i);
 
 public:
 	Tokenizer() = delete;
