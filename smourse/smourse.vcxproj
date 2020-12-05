@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\parser.cpp" />
     <ClCompile Include="src\error_log.cpp" />
     <ClCompile Include="src\helpers.cpp" />
     <ClCompile Include="src\morse_to_en.cpp" />

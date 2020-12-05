@@ -65,9 +65,7 @@ std::string Tokenizer::numeric_val(std::string& token_string, unsigned int& i) {
 	return "float_numeral";
 }
 
-std::vector<Token> Tokenizer::tokenize() {
-	std::vector<Token> tokens;
-	
+void Tokenizer::tokenize(std::vector<Token>& tokens) {
 	unsigned int i = 0;
 	std::string type;
 	std::string token_string = "";
@@ -108,6 +106,4 @@ std::vector<Token> Tokenizer::tokenize() {
 			i++;
 		}
 	}
-
-	return tokens;
 }

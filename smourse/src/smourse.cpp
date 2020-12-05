@@ -16,17 +16,12 @@ int main(int argc, char** argv) {
 
 	Tokenizer tokenizer(en_source);
 	try {
-		tokens = tokenizer.tokenize();
-		for (Token& token : tokens) {
-			std::cout << token;
-		}
+		tokenizer.tokenize(tokens);
 	}
 	catch (ErrorLog& e) {
 		std::cerr << e.get_message() << std::endl;
+		return -1;
 	}
-	
-	OpCode op("hello", "world");
-	print(op);
 
 	return 0;
 }

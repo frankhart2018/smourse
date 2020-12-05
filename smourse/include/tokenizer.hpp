@@ -26,5 +26,5 @@ public:
 
 	Tokenizer(std::string& en_source);
 
-	std::vector<Token> tokenize();
+	void tokenize(std::vector<Token>& tokens);
 };
