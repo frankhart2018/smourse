@@ -7,6 +7,7 @@
 #include "error_log.hpp"
 #include "helpers.hpp"
 #include "opcodes.hpp"
+#include "parser.hpp"
 
 int main(int argc, char** argv) {
 	std::string filepath = argv[1];
@@ -17,6 +18,25 @@ int main(int argc, char** argv) {
 	Tokenizer tokenizer(en_source);
 	try {
 		tokenizer.tokenize(tokens);
+		for (Token& token : tokens) {
+			print(token);
+		}
+	}
+	catch (ErrorLog& e) {
+		std::cerr << e.get_message() << std::endl;
+		return -1;
+	}
+
+	std::vector<OpCode> opcodes;
+
+	print("\n");
+
+	Parser parser(tokens);
+	try {
+		parser.parse(opcodes);
+		for (OpCode& opcode : opcodes) {
+			print(opcode);
+		}
 	}
 	catch (ErrorLog& e) {
 		std::cerr << e.get_message() << std::endl;

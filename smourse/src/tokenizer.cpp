@@ -98,7 +98,7 @@ void Tokenizer::tokenize(std::vector<Token>& tokens) {
 			}
 		}
 		else if (en_source[i] == '\n') {
-			tokens.emplace_back(Token("newline", line_num));
+			tokens.emplace_back(Token("", "newline", line_num));
 			i++;
 			line_num++;
 		}
