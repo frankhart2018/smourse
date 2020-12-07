@@ -2,6 +2,12 @@
 
 Interpreter for the smourse language. Smourse is an esoteric language which requires users to code in morse code rather than using unicode characters. Smourse is not aimed to be used for software development, but is a tool for programmers to think fast, because while programming using smourse one not only has to keep in mind the logic but also the morse code for each character which sharpens once thinking capabilities.
 
+Here is a hello world program in smource:-
+
+```
+.--. .-. .. -. - ~ --- .--. - ~ --.- - ~ .... . .-.. .-.. --- ~ .-- --- .-. .-.. -.. ~ --.- - ~ -.-. .--. - 
+```
+
 ## Steps to run
 
 1) Using Visual Studio
@@ -21,6 +27,8 @@ user@programmer~:$ gcc -std=c++11 -I include/ src/*.cpp
 ### Will be open sourced soon
 
 ## Morse code table
+
+- ~ is used in smourse to indicate space. Note this is not a morse code this is just a special character.
 
 <table class="table table-bordered table-hover table-condensed">
 <thead><tr><th title="Field #1">Morse Code</th>
