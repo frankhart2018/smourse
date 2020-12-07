@@ -151,6 +151,7 @@
     <ClCompile Include="src\smourse.cpp" />
     <ClCompile Include="src\token.cpp" />
     <ClCompile Include="src\tokenizer.cpp" />
+    <ClCompile Include="src\vm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\error_log.hpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="include\parser.hpp" />
     <ClInclude Include="include\token.hpp" />
     <ClInclude Include="include\tokenizer.hpp" />
+    <ClInclude Include="include\vm.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
