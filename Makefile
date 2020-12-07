@@ -1,0 +1,2 @@
+install: smourse/src/error_log.cpp smourse/src/helpers.cpp smourse/src/morse_to_en.cpp smourse/src/opcodes.cpp smourse/src/parser.cpp smourse/src/smourse.cpp smourse/src/token.cpp smourse/src/tokenizer.cpp smourse/src/vm.cpp
+	@g++ -std=c++11 -I smourse/include/ -o smourse-lang smourse/src/*.cpp
