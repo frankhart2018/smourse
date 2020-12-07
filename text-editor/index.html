@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>In-browser text editor</title>
+
+        <style type="text/css">
+            #header {
+                text-align: center;
+            }
+
+            .codearea {
+                width: 80%; 
+                height: 200px; 
+                display: block; 
+                margin: 0 auto;
+                font-size: 120%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2 id="header">In-browser text editor for smourse</h2>
+        <textarea placeholder="Enter your code here" id="code" class="codearea" autofocus></textarea>
+        <br>
+        <textarea id="code_en" class="codearea"></textarea>
+
+        <script type="text/javascript">
+            var morse_code = "";
+            var converted_code = "";
+            var code = document.getElementById("code");
+            var code_en = document.getElementById("code_en");
+
+            var morse_to_en = {
+                ".-": "a",
+                "-..": "b",
+                "-.-.": "c",
+                "-..": "d",
+                ".": "e",
+                "..-.": "f",
+                "--.": "g",
+                "....": "h",
+                "..": "i",
+                ".---": "j",
+                "-.-": "k",
+                ".-..": "l",
+                "--": "m",
+                "-.": "n", 
+                "---": "o",
+                ".--.": "p",
+                "--.-": "q",
+                ".-.": "r",
+                "...": "s",
+                "-": "t",
+                "..-": "u",
+                "...-": "v",
+                ".--": "w",
+                "-..-": "x",
+                "-.--": "y",
+                "--..": "z",
+                "-----": "0",
+                ".----": "1",
+                "..---": "2",
+                "...--": "3",
+                "....-": "4",
+                ".....": "5",
+                "-....": "6",
+                "--...": "7",
+                "---..": "8",
+                "----.": "9",
+                "~": " "
+            };
+
+            code.onkeypress =  function(e){
+                var keynum;
+                var char;
+
+                if(window.event) { // IE                    
+                    keynum = e.keyCode;
+                } else if(e.which){ // Netscape/Firefox/Opera                   
+                    keynum = e.which;
+                }
+
+                char = String.fromCharCode(keynum);
+                if(char != " ") {
+                    morse_code += char;
+                } else {
+                    console.log(morse_code);
+                    converted_code += morse_to_en[morse_code];
+                    code_en.value = converted_code;
+                    morse_code = "";
+                }
+            }
+        </script>
+    </body>
+</html>
