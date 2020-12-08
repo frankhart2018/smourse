@@ -22,17 +22,15 @@
         <h2 id="header">In-browser text editor for smourse</h2>
         <textarea placeholder="Enter your code here" id="code" class="codearea" autofocus></textarea>
         <br>
-        <textarea id="code_en" class="codearea"></textarea>
+        <textarea id="code_en" class="codearea" disabled></textarea>
 
         <script type="text/javascript">
-            var morse_code = "";
-            var converted_code = "";
             var code = document.getElementById("code");
             var code_en = document.getElementById("code_en");
 
             var morse_to_en = {
                 ".-": "a",
-                "-..": "b",
+                "-...": "b",
                 "-.-.": "c",
                 "-..": "d",
                 ".": "e",
@@ -67,8 +65,26 @@
                 "--...": "7",
                 "---..": "8",
                 "----.": "9",
-                "~": " "
+                "~": " ",
+                " ": " ",
             };
+
+            function convert_morse_to_en() {
+                var lines_of_code = code.value.split("\n");
+                var split_code;
+                var converted_code = "";
+                for(var i = 0; i < lines_of_code.length; i++) {
+                    split_code = lines_of_code[i].split(" ");
+                    for(var j = 0; j < split_code.length; j++) {
+                        if(split_code[j].length > 0)
+                            converted_code += morse_to_en[split_code[j]];
+                        else
+                            converted_code += "\n";
+                    }
+                }
+
+                code_en.value = converted_code;
+            }
 
             code.onkeypress =  function(e){
                 var keynum;
@@ -81,13 +97,8 @@
                 }
 
                 char = String.fromCharCode(keynum);
-                if(char != " ") {
-                    morse_code += char;
-                } else {
-                    console.log(morse_code);
-                    converted_code += morse_to_en[morse_code];
-                    code_en.value = converted_code;
-                    morse_code = "";
+                if(char == " ") {
+                    convert_morse_to_en();
                 }
             }
         </script>
