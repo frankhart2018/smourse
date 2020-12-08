@@ -24,7 +24,7 @@ user@programmer~:$ gcc -std=c++11 -I include/ src/*.cpp
 
 ```
 
-- You can use the in-browser basic text editor (can be found at text-editor/index.html) for easing your lives a bit.
+- You can use the in-browser basic text editor (can be found at docs/index.html or https://frankhart2018.github.io/smourse) for easing your lives a bit.
 
 ### Will be open sourced soon
 
